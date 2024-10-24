@@ -37,6 +37,24 @@ services:
     networks:
       - consul-network
 
+  redis:
+    image: redis:7.0
+    container_name: redis-medfriend
+    ports:
+      - ${REDIS_PORT}:6379
+    volumes:
+      - ./redis-data:/data
+    networks:
+      - consul-network
+    labels:
+      - "consul.register=true"
+      - "consul.service.name=redis-medfriend"
+      - "consul.service.port=6379"
+      - "consul.check.interval=10s"
+      - "consul.check.timeout=5s"
+      - "consul.check.script=docker exec redis-medfriend redis-cli ping"
+
+
 networks:
   consul-network:
     driver: bridge
