@@ -23,8 +23,8 @@ services:
       - "consul.check.script=docker exec ${CONTAINER_NAME} pg_isready -U ${POSTGRES_USER}"
 
   consul:
-    image: consul:latest
-    container_name: consul
+    image: consul:1.15.4
+    container_name: consul-medfri
     ports:
       - "8500:8500"  # Consul UI
       - "8600:8600"  # Consul DNS
