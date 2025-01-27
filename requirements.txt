@@ -1,0 +1,32 @@
+### requirimiento zeroMQ ###
+
+## linux systems
+sudo apt update
+sudo apt install libzmq3-dev
+
+##instalacion  la version draft de zeromq
+wget https://github.com/zeromq/libzmq/releases/download/v4.3.4/zeromq-4.3.4.tar.gz
+tar -xvzf zeromq-4.3.4.tar.gz
+cd zeromq-4.3.4
+
+### ejecutar dentro de zeromq
+./configure --enable-drafts
+make
+sudo make install
+sudo ldconfig
+
+## instalacion zeromq version draft go
+go get -u -tags "zmq_draft" github.com/pebbe/zmq4
+
+
+## Herramientas de red ##
+
+## revizar si el consumidor esta activo
+sudo ss -tnp | grep 5555
+
+## revizar si el puerto esta disponible
+sudo netstat -tuln | grep 5557
+
+## revizar el trafico
+sudo tcpdump -i lo port 5555 -X
+
