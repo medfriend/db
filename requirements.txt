@@ -30,3 +30,8 @@ sudo netstat -tuln | grep 5557
 ## revizar el trafico
 sudo tcpdump -i lo port 5555 -X
 
+
+## dentro del contendor de rabbitmq habiliar stomp
+rabbitmq-plugins enable rabbitmq_stomp
+rabbitmq-plugins enable rabbitmq_web_stomp
+
