@@ -35,3 +35,6 @@ sudo tcpdump -i lo port 5555 -X
 rabbitmq-plugins enable rabbitmq_stomp
 rabbitmq-plugins enable rabbitmq_web_stomp
 
+## habilitar el proxy de nexus sobre go
+export GOPROXY=http://localhost:8081/repository/go-proxy,direct
+

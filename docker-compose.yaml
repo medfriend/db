@@ -44,9 +44,13 @@ services:
     volumes:
       - ./rabbitmq-data:/var/lib/rabbitmq
 
-  redisinsight:
-    image: redislabs/redisinsight:latest
-    container_name: redisinsight-medfriend
+  nexus:
+    image: sonatype/nexus3:latest
+    container_name: nexus-medfriend
     ports:
-      - "8001:8001"  # RedisInsight UI Port
-    restart: always
+      - "8081:8081"  # Nexus web UI
+    volumes:
+      - ./nexus-data:/nexus-data
+    environment:
+      NEXUS_CONTEXT_PATH: "/"
+      NEXUS_SECURITY_RANDOMPASSWORD: "false"
