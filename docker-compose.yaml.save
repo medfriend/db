@@ -1,0 +1,101 @@
+version: '3.8'
+
+services:
+  med-friend-db-sql:
+    image: postgres:16.2
+    container_name: ${CONTAINER_NAME}
+    ports:
+      - 7500:5432
+    volumes:
+      - ./med-friend-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+
+  consul:
+    image: consul:1.15.4
+    container_name: consul-medfri
+    ports:
+      - "8500:8500"  # Consul UI
+      - "8600:8600"  # Consul DNS
+    command: "agent -dev -client 0.0.0.0"
+    volumes:
+      - ./consul-data:/consul/data
+    environment:
+      CONSUL_BIND_INTERFACE: eth0
+
+  redis:
+    image: redis:7.0
+    container_name: redis-medfriend
+    ports:
+      - ${REDIS_PORT}:6379
+    volumes:
+      - ./redis-data:/data
+
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: rabbitmq-medfriend
+    ports:
+      - ${RABBIT_PORT}:5672
+      - 15672:15672
+      - 15674:15674
+      - 61613:61613
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBIT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBIT_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: /
+    volumes:
+      - ./rabbitmq-data:/var/lib/rabbitmq
+
+  nexus:
+    image: sonatype/nexus3:latest
+    container_name: nexus-medfriend
+    ports:
+      - "8081:8081"
+    volumes:
+      - ./nexus-data:/nexus-data
+    environment:
+      NEXUS_CONTEXT_PATH: "/"
+      NEXUS_SECURITY_RANDOMPASSWORD: "false"
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio-medfriend
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./minio-data:/data
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    command: server /data --console-address ":9001"
+
+  minio-setup:
+    image: minio/mc:latest
+    depends_on:
+      - minio
+    entrypoint: >
+      /bin/sh -c "
+      /usr/bin/mc alias set myminio http://minio:9000 ${MINIO_ROOT_USER} ${MINIO_ROOT_PASSWORD} &&
+      /usr/bin/mc mb myminio/my-bucket &&
+      /usr/bin/mc policy set download myminio/my-bucket &&
+      /usr/bin/mc admin user add myminio ${MINIO_USER} ${MINIO_USER_PASSWORD} &&
+      /usr/bin/mc admin policy set myminio readwrite user=${MINIO_USER}"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-medfriend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./templates:/etc/nginx/templates
+    environment:
+      - NGINX_ADMIN=${}
+      - NGINX_SECURITY=${NGINX_SECURITY}
+      - NGINX_LAW=${NGINX_LAW}
+      - NGINX_ANALYTICS=${NGINX_ANALYTICS}
+      - NGINX_GETWAY=${NGINX_GETWAY}

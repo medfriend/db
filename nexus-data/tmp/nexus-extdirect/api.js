@@ -214,12 +214,12 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       },
       {
-        name: 'sync',
+        name: 'done',
         len: 0,
         formHandler: false
       },
       {
-        name: 'done',
+        name: 'sync',
         len: 0,
         formHandler: false
       },
