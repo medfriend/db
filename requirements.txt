@@ -10,6 +10,7 @@ tar -xvzf zeromq-4.3.4.tar.gz
 cd zeromq-4.3.4
 
 ### ejecutar dentro de zeromq
+sudo apt install build-essential
 ./configure --enable-drafts
 make
 sudo make install
@@ -41,3 +42,12 @@ export GOPROXY=http://localhost:8081/repository/go-proxy,direct
 export GOPROXY=https://proxy.golang.org
 
 ## primero antes de instalar los componentes habilitar el nexus
+
+## la carpeta de herramientas externas son herramientas que mejoran la calidad pero no son indispensables para el funcionamiento del software
+
+# Requirimientos SONARQUDE
+sudo nano /etc/sysctl.conf
+vm.max_map_count=262144
+sudo sysctl -p
+
+#cuando se cambie de red de trabajo actulizar la ip de red en la variable $backend_ip dentro de nginx.conf con el que se muestra al iniciar un ft
