@@ -134,12 +134,12 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       },
       {
-        name: 'ReadNoneGroupEntriesIncludingEntryForAll'/*() => java.util.List */,
+        name: 'readGroups'/*() => java.util.List */,
         len: 0,
         formHandler: false
       },
       {
-        name: 'readGroups'/*() => java.util.List */,
+        name: 'ReadNoneGroupEntriesIncludingEntryForAll'/*() => java.util.List */,
         len: 0,
         formHandler: false
       },
