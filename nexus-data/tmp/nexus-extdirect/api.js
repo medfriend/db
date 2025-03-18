@@ -125,12 +125,12 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       },
       {
-        name: 'readGroups',
+        name: 'ReadNoneGroupEntriesIncludingEntryForAll',
         len: 0,
         formHandler: false
       },
       {
-        name: 'ReadNoneGroupEntriesIncludingEntryForAll',
+        name: 'readGroups',
         len: 0,
         formHandler: false
       },
