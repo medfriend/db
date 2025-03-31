@@ -105,7 +105,7 @@ osgi.wiring.package; (&(osgi.wiring.package=org.sonatype.nexus.common.collect)(v
 osgi.wiring.package; (&(osgi.wiring.package=org.apache.shiro.authz)(version>=1.13.0))
 159; version=1.13.0
 osgi.wiring.package; (&(osgi.wiring.package=org.codehaus.groovy.runtime)(version>=3.0.0))
-133; version=3.0.19
+130; version=3.0.19
 osgi.wiring.package; (osgi.wiring.package=java.util.stream)
 0; version=0.0.0
 osgi.wiring.package; (&(osgi.wiring.package=groovy.transform)(version>=3.0.0))

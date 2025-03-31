@@ -111,7 +111,7 @@ osgi.wiring.package; (&(osgi.wiring.package=com.google.common.eventbus)(version>
 osgi.wiring.package; (&(osgi.wiring.package=org.elasticsearch.search)(version>=3.76.0))
 275; version=3.76.1
 osgi.wiring.package; (&(osgi.wiring.package=org.codehaus.groovy.runtime)(version>=3.0.0))
-133; version=3.0.19
+130; version=3.0.19
 osgi.wiring.package; (&(osgi.wiring.package=org.sonatype.nexus.common.db)(version>=3.76.0))
 105; version=3.76.1
 osgi.wiring.package; (osgi.wiring.package=java.util.stream)
