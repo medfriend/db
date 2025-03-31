@@ -105,6 +105,7 @@ services:
       - ./ssl/nginx.crt:/etc/nginx/ssl/nginx.crt:ro
       - ./ssl/nginx.key:/etc/nginx/ssl/nginx.key:ro
       - ./502.html:/usr/share/nginx/html/502.html
+      - ./404.html:/usr/share/nginx/html/404.html
     #networks:
     #  custom_network:
     #    ipv4_address: 172.18.0.7
