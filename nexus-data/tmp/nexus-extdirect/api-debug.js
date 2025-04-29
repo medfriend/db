@@ -41,12 +41,12 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       },
       {
-        name: 'disable'/*(String) => void */,
+        name: 'enable'/*(String) => void */,
         len: 1,
         formHandler: false
       },
       {
-        name: 'enable'/*(String) => void */,
+        name: 'disable'/*(String) => void */,
         len: 1,
         formHandler: false
       },
@@ -113,6 +113,8 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       }
     ],
+    rapture_State: [
+    ],
     firewall_RepositoryStatus: [
       {
         name: 'read'/*() => java.util.List */,
@@ -125,16 +127,9 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       }
     ],
-    rapture_State: [
-    ],
     coreui_Blobstore: [
       {
-        name: 'fillPolicies'/*() => java.util.List */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'ReadNoneGroupEntriesIncludingEntryForAll'/*() => java.util.List */,
+        name: 'readNoneGroupEntriesIncludingEntryForAll'/*() => java.util.List */,
         len: 0,
         formHandler: false
       },
@@ -193,63 +188,6 @@ NX.direct.api.REMOTING_API = {
       {
         name: 'read'/*(org.sonatype.nexus.coreui.TreeStoreLoadParameters) => java.util.List */,
         len: 1,
-        formHandler: false
-      }
-    ],
-    migration_Assistant: [
-      {
-        name: 'cancel'/*() => void */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'prepare'/*() => void */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'abort'/*() => void */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'finish'/*() => void */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'configure'/*(com.sonatype.nexus.migration.ui.AssistantComponent$ConfigurationXO) => com.sonatype.nexus.migration.ui.AssistantComponent$PreviewXO */,
-        len: 1,
-        formHandler: false
-      },
-      {
-        name: 'done'/*() => void */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'sync'/*() => void */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'stopWaiting'/*() => boolean */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'syncStatus'/*() => com.sonatype.nexus.migration.ui.AssistantComponent$SyncStatusXO */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'connect'/*(String, String, int, Boolean) => void */,
-        len: 4,
-        formHandler: false
-      },
-      {
-        name: 'status'/*() => com.sonatype.nexus.migration.ui.AssistantComponent$StatusXO */,
-        len: 0,
         formHandler: false
       }
     ],
@@ -349,23 +287,6 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       }
     ],
-    outreach_Outreach: [
-      {
-        name: 'readStatus'/*() => String */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'setLog4JVisualizerEnabled'/*(boolean) => void */,
-        len: 1,
-        formHandler: false
-      },
-      {
-        name: 'getProxyDownloadNumbers'/*() => String */,
-        len: 0,
-        formHandler: false
-      }
-    ],
     s3_S3: [
       {
         name: 'signertypes'/*() => java.util.List */,
@@ -383,10 +304,15 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       }
     ],
-    healthcheck_Info: [
+    outreach_Outreach: [
       {
-        name: 'read'/*(java.util.List) => java.util.List */,
-        len: 1,
+        name: 'readStatus'/*() => String */,
+        len: 0,
+        formHandler: false
+      },
+      {
+        name: 'getProxyDownloadNumbers'/*() => String */,
+        len: 0,
         formHandler: false
       }
     ],
@@ -394,6 +320,13 @@ NX.direct.api.REMOTING_API = {
       {
         name: 'getUploadDefinitions'/*() => java.util.Collection */,
         len: 0,
+        formHandler: false
+      }
+    ],
+    healthcheck_Info: [
+      {
+        name: 'read'/*(com.sonatype.nexus.plugins.healthcheck.ui.HealthCheckXO[]) => java.util.List */,
+        len: 1,
         formHandler: false
       }
     ],
@@ -521,30 +454,6 @@ NX.direct.api.REMOTING_API = {
       {
         name: 'authenticationToken'/*(String, String) => String */,
         len: 2,
-        formHandler: false
-      }
-    ],
-    migration_Repository: [
-      {
-        name: 'read'/*() => java.util.List */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'defaults'/*() => com.sonatype.nexus.migration.ui.RepositoryComponent$DefaultsXO */,
-        len: 0,
-        formHandler: false
-      }
-    ],
-    migration_Progress: [
-      {
-        name: 'read'/*(String) => com.sonatype.nexus.migration.ui.ProgressComponent$ProgressXO */,
-        len: 1,
-        formHandler: false
-      },
-      {
-        name: 'detail'/*(String) => com.sonatype.nexus.migration.ui.ProgressComponent$StepDetailXO */,
-        len: 1,
         formHandler: false
       }
     ],
@@ -719,13 +628,13 @@ NX.direct.api.REMOTING_API = {
     ],
     ssl_Certificate: [
       {
-        name: 'details'/*(String) => com.sonatype.nexus.ssl.plugin.internal.ui.CertificateXO */,
-        len: 1,
+        name: 'retrieveFromHost'/*(String, Integer, String) => com.sonatype.nexus.ssl.plugin.internal.ui.CertificateXO */,
+        len: 3,
         formHandler: false
       },
       {
-        name: 'retrieveFromHost'/*(String, Integer, String) => com.sonatype.nexus.ssl.plugin.internal.ui.CertificateXO */,
-        len: 3,
+        name: 'details'/*(String) => com.sonatype.nexus.ssl.plugin.internal.ui.CertificateXO */,
+        len: 1,
         formHandler: false
       }
     ],
@@ -748,13 +657,13 @@ NX.direct.api.REMOTING_API = {
     ],
     coreui_Repository: [
       {
-        name: 'readReferencesAddingEntriesForAllFormats'/*(org.sonatype.nexus.extdirect.model.StoreLoadParameters) => java.util.List */,
-        len: 1,
+        name: 'getBrowseableFormats'/*() => java.util.List */,
+        len: 0,
         formHandler: false
       },
       {
-        name: 'getBrowseableFormats'/*() => java.util.List */,
-        len: 0,
+        name: 'readReferencesAddingEntriesForAllFormats'/*(org.sonatype.nexus.extdirect.model.StoreLoadParameters) => java.util.List */,
+        len: 1,
         formHandler: false
       },
       {
@@ -834,13 +743,6 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       }
     ],
-    coreui_Bundle: [
-      {
-        name: 'read'/*() => java.util.List */,
-        len: 0,
-        formHandler: false
-      }
-    ],
     ahc_Component: [
       {
         name: 'containsApplication'/*(String) => boolean */,
@@ -872,18 +774,6 @@ NX.direct.api.REMOTING_API = {
         formHandler: false
       }
     ],
-    rut_Auth: [
-      {
-        name: 'authenticate'/*() => boolean */,
-        len: 0,
-        formHandler: false
-      },
-      {
-        name: 'authToken'/*() => String */,
-        len: 0,
-        formHandler: false
-      }
-    ],
     coreui_Freeze: [
       {
         name: 'forceRelease'/*() => org.sonatype.nexus.coreui.FreezeStatusXO */,
@@ -904,6 +794,18 @@ NX.direct.api.REMOTING_API = {
     atlas_SystemInformation: [
       {
         name: 'read'/*() => java.util.Map */,
+        len: 0,
+        formHandler: false
+      }
+    ],
+    rut_Auth: [
+      {
+        name: 'authenticate'/*() => boolean */,
+        len: 0,
+        formHandler: false
+      },
+      {
+        name: 'authToken'/*() => String */,
         len: 0,
         formHandler: false
       }

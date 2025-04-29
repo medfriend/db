@@ -1,0 +1,30 @@
+2025-04-25 05:34:47,974+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - Task information:
+2025-04-25 05:34:47,977+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask -  ID: 3fc146b8-5d72-4956-9be0-bb7aa6649fd1
+2025-04-25 05:34:47,978+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask -  Type: component.normalize.version
+2025-04-25 05:34:47,978+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask -  Name: Repair - Normalize component versions for retain-n
+2025-04-25 05:34:47,978+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask -  Description: populate normalized_version column on {format}_component tables
+2025-04-25 05:34:47,978+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - Task configuration: {.updated=2025-04-25T05:34:47.923Z, .name=Repair - Normalize component versions for retain-n, .recoverable=false, .message=populate normalized_version column on {format}_component tables, .id=3fc146b8-5d72-4956-9be0-bb7aa6649fd1, .typeName=Repair - Normalize component versions for retain-n, .visible=false, .typeId=component.normalize.version, .exposed=false, .created=2025-04-25T05:34:47.923Z}
+2025-04-25 05:34:47,981+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing cocoapods components version
+2025-04-25 05:34:47,986+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing p2 components version
+2025-04-25 05:34:47,989+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing apt components version
+2025-04-25 05:34:47,991+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing composer components version
+2025-04-25 05:34:48,001+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - found 0 unnormalized records on composer components
+2025-04-25 05:34:48,008+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing gitlfs components version
+2025-04-25 05:34:48,009+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing conan components version
+2025-04-25 05:34:48,011+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing go components version
+2025-04-25 05:34:48,012+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing maven2 components version
+2025-04-25 05:34:48,014+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing raw components version
+2025-04-25 05:34:48,016+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing npm components version
+2025-04-25 05:34:48,017+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing huggingface components version
+2025-04-25 05:34:48,022+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - found 0 unnormalized records on huggingface components
+2025-04-25 05:34:48,023+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing nuget components version
+2025-04-25 05:34:48,026+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing rubygems components version
+2025-04-25 05:34:48,028+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing helm components version
+2025-04-25 05:34:48,033+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing docker components version
+2025-04-25 05:34:48,034+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing yum components version
+2025-04-25 05:34:48,037+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing r components version
+2025-04-25 05:34:48,038+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing pypi components version
+2025-04-25 05:34:48,040+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing conda components version
+2025-04-25 05:34:48,042+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - normalizing cargo components version
+2025-04-25 05:34:48,047+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - found 0 unnormalized records on cargo components
+2025-04-25 05:34:48,050+0000 INFO  [quartz-8-thread-11]  *TASK org.sonatype.nexus.repository.content.tasks.normalize.NormalizeComponentVersionTask - Task complete
