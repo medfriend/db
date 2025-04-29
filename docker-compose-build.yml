@@ -96,15 +96,6 @@ services:
     #  custom_network:
     #    ipv4_address: 172.19.0.7
 
-volumes:
-  sonarqube_conf:
-  sonarqube_data:
-  sonarqube_extensions:
-  sonarqube_logs:
-  sonarqube_temp:
-  sonar_db:
-  sonar_db_data:
-
 networks:
   custom_network:
     driver: bridge
