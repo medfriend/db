@@ -1,1 +1,0 @@
-172.19.0.1 - admin [25/Apr/2025:06:22:55 +0000] "GET /repository/angular-pack/@mdf%2fweb-shared-module HTTP/1.1" 304 - 0 518 "npm/10.9.2 node/v22.14.0 linux x64 workspaces/false" [qtp2120532393-132]

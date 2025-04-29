@@ -2,4 +2,11 @@
 /med-friend-data
 /consul-data
 /redis-data
+/arquitectura
+/docker
+/dumps
+/minio-data
+/nexus-data
+/rabbitmq-data
+
 .DS_Store
