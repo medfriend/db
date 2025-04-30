@@ -88,8 +88,9 @@ services:
     network_mode: host
     volumes:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
-      - ./ssl/nginx.crt:/etc/nginx/ssl/nginx.crt:ro
-      - ./ssl/nginx.key:/etc/nginx/ssl/nginx.key:ro
+      - ./ssl/certificate.crt:/etc/nginx/ssl/certificate.crt:ro
+      - ./ssl/private.key:/etc/nginx/ssl/private.key:ro
+      - ./ssl/ca_bundle.crt:/etc/nginx/ssl/ca_bundle.crt:ro
       - ./502.html:/usr/share/nginx/html/502.html
       - ./404.html:/usr/share/nginx/html/404.html
     #networks:
