@@ -116,7 +116,4 @@ networks:
         - subnet: 172.19.0.0/16
 
   mdf_default:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.18.0.0/16
+    external: true
