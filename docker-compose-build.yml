@@ -110,10 +110,7 @@ services:
 
 networks:
   custom_network:
-    driver: bridge
-    ipam:
-      config:
-        - subnet: 172.19.0.0/16
+    external: true
 
   mdf_default:
     external: true
