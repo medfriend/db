@@ -99,7 +99,6 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf:ro
       - ./ssl/certificate.crt:/etc/nginx/ssl/certificate.crt:ro
       - ./ssl/private.key:/etc/nginx/ssl/private.key:ro
-      - ./ssl/ca_bundle.crt:/etc/nginx/ssl/ca_bundle.crt:ro
       - ./502.html:/usr/share/nginx/html/502.html
       - ./404.html:/usr/share/nginx/html/404.html
     networks:
