@@ -1,13 +1,25 @@
 #aqui se encuentra los script para inicializar los server necesarios para el funcionamiento del backend
 
-#comando para levantar en desarrollo
+# version de docker compose
+
+##comando para levantar en desarrollo
 ```bash
 docker-compose -f docker-compose-dev.yml --env-file .env.dev up -d
 ```
 
-#comano para levantar en despliegue
+##comando para levantar en despliegue
 ```bash
 docker-compose -f docker-compose-build.yml up -d
+```
+
+# version de kubernetes
+
+##comando para levantar en desarrollo
+- cambiar la configuracion de docker-compose por docker-compose-dev.yml
+- cambiar la configuracion de .env por .env.dev
+
+```bash
+./convertir-compose.sh
 ```
 
 comando para generacion de copias de seguridad
