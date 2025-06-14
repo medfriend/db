@@ -1,0 +1,115 @@
+version: '3.8'
+
+services:
+  med-friend-db-sql:
+    image: postgres:16.2
+    container_name: ${CONTAINER_NAME}
+    ports:
+      - "7500:5432"
+    volumes:
+      - ./med-friend-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_DB: ${POSTGRES_DB}
+    networks:
+      custom_network:
+        ipv4_address: ${IP_CUSTOM_POSTGRES}
+      mdf_default:
+        ipv4_address: ${IP_DEFAULT_POSTGRES}
+
+  consul:
+    image: consul:1.15.4
+    container_name: consul-medfri
+    ports:
+      - "8500:8500"
+      - "8600:8600"
+    command: "agent -dev -client 0.0.0.0"
+    volumes:
+      - ./consul-data:/consul/data
+    environment:
+      CONSUL_BIND_INTERFACE: eth0
+    networks:
+      custom_network:
+        ipv4_address: ${IP_CUSTOM_CONSUL}
+      mdf_default:
+        ipv4_address: ${IP_DEFAULT_CONSUL}
+
+  redis:
+    image: redis:7.0
+    container_name: redis-medfriend
+    ports:
+      - ${REDIS_PORT}:6379
+    volumes:
+      - ./redis-data:/data
+    networks:
+      custom_network:
+        ipv4_address: ${IP_CUSTOM_REDIS}
+      mdf_default:
+        ipv4_address: ${IP_DEFAULT_REDIS}
+
+  rabbitmq:
+    image: rabbitmq:3.12-management
+    container_name: rabbitmq-medfriend
+    ports:
+      - ${RABBIT_PORT}:5672
+      - 15672:15672
+      - 15674:15674
+      - 61613:61613
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBIT_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBIT_PASSWORD}
+      RABBITMQ_DEFAULT_VHOST: /
+    volumes:
+      - ./rabbitmq-data:/var/lib/rabbitmq
+    command: >
+      bash -c "rabbitmq-plugins enable rabbitmq_stomp rabbitmq_web_stomp
+      && rabbitmq-server"
+    networks:
+      custom_network:
+        ipv4_address: ${IP_CUSTOM_RABBIT}
+      mdf_default:
+        ipv4_address: ${IP_DEFAULT_RABBIT}
+
+  minio:
+    image: minio/minio:latest
+    container_name: minio-medfriend
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - ./minio-data:/data
+    environment:
+      MINIO_ROOT_USER: ${MINIO_ROOT_USER}
+      MINIO_ROOT_PASSWORD: ${MINIO_ROOT_PASSWORD}
+    command: server /data --console-address ":9001"
+    networks:
+      custom_network:
+        ipv4_address: ${IP_CUSTOM_MINIO}
+      mdf_default:
+        ipv4_address: ${IP_DEFAULT_MINIO}
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx-medfriend
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ${NGINX_CONF_PATH}:/etc/nginx/nginx.conf:ro
+      - ./ssl/certificate.crt:/etc/nginx/ssl/certificate.crt:ro
+      - ./ssl/private.key:/etc/nginx/ssl/private.key:ro
+      - ./ssl/ca_bundle.crt:/etc/nginx/ssl/ca_bundle.crt:ro
+      - ./502.html:/usr/share/nginx/html/502.html
+      - ./404.html:/usr/share/nginx/html/404.html
+    networks:
+      custom_network:
+        ipv4_address: ${IP_CUSTOM_NGINX}
+      mdf_default:
+        ipv4_address: ${IP_DEFAULT_NGINX}
+
+networks:
+  custom_network:
+    external: true
+  mdf_default:
+    external: true
